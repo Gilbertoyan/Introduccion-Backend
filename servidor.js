@@ -20,6 +20,7 @@ http.createServer( function(request, response){
 
 
     };
+    contentType = mimeTypes [extname] || 'application/octet-stream';
 
     fs.readFile(filePath, function(error, content){
         if(error){
@@ -31,7 +32,7 @@ http.createServer( function(request, response){
             }
             else{
                 response.writeHead(500);
-                response.end('sorry, check with the site admin for error: ' +error.
+                response.end('sorry, check with the site admin for error: ' +error.code+' ..\n');
                 response.end();
             }
         }
@@ -44,4 +45,3 @@ http.createServer( function(request, response){
 }).listen(3000);
 console.log('server running at http://127.0.0.1:3000/');
     
-}
